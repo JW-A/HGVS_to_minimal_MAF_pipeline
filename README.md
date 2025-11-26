@@ -1,25 +1,25 @@
 # HGVS-to-minimal-MAF pipeline
-HGVS로 minimal MAF를 만들기 위한 pipeline
+Pipeline for creating minimal MAF with HGVS
 
-# 개요:
-   - 엑셀에 있는 HGVS (HGVSc/HGVSp) 정보를 이용해 \
-     먼저 GRCh37 VEP를 annotation, 안 되면 GRCh38 VEP를 annotation 후 \
-     Ensembl assembly map API로 GRCh38→GRCh37 좌표를 변환하여 \
-     최종적으로 모두 GRCh37(hg19) 좌표 기준의 minimal MAF를 생성
+# outline:
+   - Using the HGVS (HGVSc) information in Excel \
+     First, annotate GRCh37 VEP, if that doesn't work, then annotate GRCh38 VEP \
+     Converting GRCh38→GRCh37 coordinates using Ensembl assembly map API \
+     Finally, all generate minimal MAF based on GRCh37 (hg19) coordinates
 
-# 요구:
-   - https://grch37.rest.ensembl.org  와 https://rest.ensembl.org 에 접속 가능 \
-   - 파이썬3, pandas, requests 설치
+# Requirements:
+   - Available at https://grch37.rest.ensembl.org and https://rest.ensembl.org \
+   - Install Python 3, pandas, and requests
 
-# 사용법:
+# How to use:
    chmod +x minimal_maf_vep_hg38tohg19_V.1.0.0.sh \
    ./minimal_maf_vep_hg38tohg19_V.1.0.0.sh minimal_maf_test_normalized.xlsx [sheet] [threads]
 
 
-# 입력 엑셀에 필요한 컬럼:
+# Columns required for input Excel:
    - sample ID \
    - Gene \
-   - HGVSc        (예: c.422G>A) \
-   - HGVSp        (예: p.Cys141Tyr) \
-   - HGVSp_short  (예: p.C141Y) \
+   - HGVSc        (ex: c.422G>A) \
+   - HGVSp        (ex: p.Cys141Tyr) \
+   - HGVSp_short  (ex: p.C141Y) \
 
